@@ -10,7 +10,13 @@ export default {
       veryLightGrayishCyan: "#f4fafa",
       white: "#ffffff",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        dollarIcon: "url('/images/icon-dollar.svg')",
+        personIcon: "url('/images/icon-person.svg')",
+        logo: "url('/images/logo.svg')",
+      },
+    },
   },
   plugins: [],
 };
