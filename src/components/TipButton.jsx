@@ -1,4 +1,5 @@
-function TipButton({ tipAmount, setTip, setTipInput, setTipError }) {
+function TipButton({ tipAmount, tip, setTip, setTipInput, setTipError }) {
+  let isSelected = tip === tipAmount || tip.concat("%") === tipAmount;
   return (
     <button
       onClick={() => {
@@ -6,7 +7,7 @@ function TipButton({ tipAmount, setTip, setTipInput, setTipError }) {
         setTipInput("");
         setTipError("");
       }}
-      className="w-32 bg-veryDarkCyan text-2xl text-white focus:bg-strongCyan focus:text-veryDarkCyan"
+      className={`${isSelected ? "bg-strongCyan text-veryDarkCyan" : "bg-veryDarkCyan text-white"} rounded-md text-2xl`}
     >
       {tipAmount}
     </button>

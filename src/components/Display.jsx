@@ -1,6 +1,7 @@
 function Display({ bill, tip, people, handleReset }) {
   let tipPerPerson = "0.00";
   let totalPerPerson = "0.00";
+  let isDisabled = true;
 
   if (bill && tip && people) {
     bill = Number(bill);
@@ -9,29 +10,35 @@ function Display({ bill, tip, people, handleReset }) {
 
     tipPerPerson = (((tip / 100) * bill) / people).toFixed(2);
     totalPerPerson = ((bill + (tip / 100) * bill) / people).toFixed(2);
+    isDisabled = false;
   }
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-col gap-4 overflow-hidden rounded-xl bg-veryDarkCyan px-4 py-6 sm:gap-8 sm:p-8">
+      <div className="flex items-center justify-between">
         <div>
-          <p>Tip Amount</p>
-          <p>/ person</p>
+          <p className="text-white">Tip Amount</p>
+          <p className="text-sm text-grayishCyan">/ person</p>
         </div>
-        <p>${tipPerPerson}</p>
+        <p className="text-2xl text-strongCyan sm:text-3xl md:text-4xl">
+          ${tipPerPerson}
+        </p>
       </div>
 
-      <div>
+      <div className="flex items-center justify-between">
         <div>
-          <p>Total</p>
-          <p>/ person</p>
+          <p className="text-white">Total</p>
+          <p className="text-sm text-grayishCyan">/ person</p>
         </div>
-        <p>${totalPerPerson}</p>
+        <p className="text-2xl text-strongCyan sm:text-3xl md:text-4xl">
+          ${totalPerPerson}
+        </p>
       </div>
 
       <button
+        disabled={isDisabled}
         onClick={handleReset}
-        className="w-full bg-strongCyan py-2 text-center text-veryDarkCyan"
+        className={`${isDisabled ? "opacity-25" : ""} w-full rounded-md bg-strongCyan py-2 text-center text-veryDarkCyan sm:mt-auto`}
       >
         RESET
       </button>
